@@ -1,31 +1,15 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-// import HelloWorld from './components/EventCard.vue'
 </script>
 
 <template>
-  <!-- <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
-  </header> -->
-
   <div id="layout">
     <header>
       <div class="wrapper">
         <nav>
-          <RouterLink to="/">Event</RouterLink>
-          <span> | </span>
-          <RouterLink to="/about">About</RouterLink>
-          <span> | </span>
-          <RouterLink to="/students">Students</RouterLink>
+          <RouterLink :to="{ name: 'event-list-view' }">Event</RouterLink> |
+          <RouterLink :to="{ name: 'about' }">About</RouterLink> |
+          <RouterLink :to="{ name: 'student-list-view' }">Students</RouterLink>
         </nav>
       </div>
     </header>
@@ -46,14 +30,21 @@ import { RouterLink, RouterView } from 'vue-router'
 nav {
   padding: 30px;
 }
-
 nav a {
   font-weight: bold;
   color: #2c3e50;
 }
 
+nav {
+  text-align: left;
+  margin-left: 1rem;
+  font-size: 1rem;
+  padding: 1rem 0;
+  margin-top: 1rem;
+}
+
 nav a.router-link-exact-active {
-  color:#42b983;
+  color: #42b983;
 }
 
 h2 {

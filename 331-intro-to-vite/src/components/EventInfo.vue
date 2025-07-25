@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Event } from '@/type'
+import type { Event } from '@/types'
 
 defineProps<{
   event: Event
@@ -7,20 +7,21 @@ defineProps<{
 </script>
 
 <template>
-  <div class="event-summary">
+  <div class="event-info">
     <div class="category">{{ event.category }}</div>
     <div class="organizer">{{ event.organizer }}</div>
   </div>
 </template>
 
 <style scoped>
-.event-summary {
+.event-info {
   text-align: right;
-  margin-bottom: 10px;
 }
 
 .category,
 .organizer {
-  font-size: 16px;
+  font-size: 14px;
+  font-family: inherit;
+  margin: 2px 0;
 }
 </style>
