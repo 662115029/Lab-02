@@ -24,6 +24,8 @@ import { RouterLink, RouterView } from 'vue-router'
           <RouterLink to="/">Event</RouterLink>
           <span> | </span>
           <RouterLink to="/about">About</RouterLink>
+          <span> | </span>
+          <RouterLink to="/students">Students</RouterLink>
         </nav>
       </div>
     </header>
