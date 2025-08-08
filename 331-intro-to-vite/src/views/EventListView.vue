@@ -58,12 +58,12 @@ onMounted(async () => {
   <h1>Events For Good</h1>
 
   <!-- Page Size Selector -->
-  <div class="page-size-selector">
+  <div class="my-5 text-center">
     <label>Events per page: </label>
     <select
       :value="pageSize"
       @change="changePageSize(Number(($event.target as HTMLSelectElement).value))"
-      class="page-size-select"
+      class="ml-2.5 px-2.5 py-1 border border-gray-300 rounded text-sm"
     >
       <option value="2">2</option>
       <option value="5">5</option>
@@ -73,24 +73,25 @@ onMounted(async () => {
   </div>
 
   <div class="flex flex-col items-center">
-    <div v-for="event in events" :key="event.id" class="event-container">
+    <div v-for="event in events" :key="event.id" class="flex flex-col items-center mb-5">
       <EventCard :event="event" />
       <EventInfo :event="event" />
     </div>
 
-    <div class="pagination-info">
+    <div class="my-5 text-center text-gray-600 text-sm">
       <p>
         Showing {{ events?.length || 0 }} of {{ totalEvents }} events (Page {{ page }} of
         {{ totalPages }})
       </p>
     </div>
 
-    <div class="pagination">
+    <div class="flex w-72 mt-5">
       <RouterLink
         id="page-prev"
         :to="{ name: 'event-list-view', query: { page: page - 1, size: pageSize } }"
         rel="prev"
         v-if="page != 1"
+        class="flex-1 no-underline text-gray-800 p-2.5 border border-gray-300 rounded mx-1 text-center hover:bg-gray-100 text-left"
         >&#60; Prev Page</RouterLink
       >
 
@@ -99,66 +100,9 @@ onMounted(async () => {
         :to="{ name: 'event-list-view', query: { page: page + 1, size: pageSize } }"
         rel="next"
         v-if="hasNextPage"
+        class="flex-1 no-underline text-gray-800 p-2.5 border border-gray-300 rounded mx-1 text-center hover:bg-gray-100 text-right"
         >Next Page &#62;</RouterLink
       >
     </div>
   </div>
 </template>
-
-<style scoped>
-.event-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
-}
-
-.page-size-selector {
-  margin: 20px 0;
-  text-align: center;
-}
-
-.page-size-select {
-  margin-left: 10px;
-  padding: 5px 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  font-size: 14px;
-}
-
-.pagination-info {
-  margin: 20px 0;
-  text-align: center;
-  color: #666;
-  font-size: 14px;
-}
-
-.pagination {
-  display: flex;
-  width: 290px;
-  margin-top: 20px;
-}
-
-.pagination a {
-  flex: 1;
-  text-decoration: none;
-  color: #2c3e50;
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  margin: 0 5px;
-  text-align: center;
-}
-
-.pagination a:hover {
-  background-color: #f5f5f5;
-}
-
-#page-prev {
-  text-align: left;
-}
-
-#page-next {
-  text-align: right;
-}
-</style>
